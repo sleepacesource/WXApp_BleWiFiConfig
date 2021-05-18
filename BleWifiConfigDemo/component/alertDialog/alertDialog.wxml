@@ -1,0 +1,21 @@
+<view class='wx_dialog_container' hidden="{{!isShow}}">
+    <cover-view class='wx-mask'></cover-view>
+
+    <cover-view class='wx-dialog'>
+        <cover-view class='wx-dialog-title'>
+          {{ title }}
+        </cover-view>
+        
+        <cover-view class='wx-dialog-content'>
+          {{ content }}
+        </cover-view>
+
+        <button class="sureBtn {{ cancelText ? '' : 'mb' }}"  hover-class='btn-hover' bindtap='_confirmEvent'>
+          {{confirmText}}
+        </button>
+
+        <button wx:if="{{ cancelText }}" class='cancelBtn' hover-class='btn-hover' bindtap='_cancelEvent'>
+          {{cancelText}}
+        </button>
+    </cover-view>
+</view>

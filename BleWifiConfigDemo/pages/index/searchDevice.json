@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "dialog": "../../component/alertDialog/alertDialog"
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "disableScroll": false
+}

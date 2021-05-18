@@ -1,0 +1,31 @@
+<!--pages/main/searchDevice.wxml-->
+<view class='container'>
+
+  <view class='header' style="padding-top:{{ statusBarHeight * 1.5 }}rpx">
+      <image class='img-back' src='../../image/icon_back@3x.png' mode="aspectFit" bindtap="goBack"></image>
+      <view>{{ lang.search_device }}</view>
+  </view>
+
+  <view class="tips">{{ lang.select_device_id }}</view>
+
+  <view class="scan-device" bindtap="scanDevice">
+    <image class="img-refresh {{scanning ? 'rotate-loop' : ''}}" src="../../image/ic_refresh.png" mode="aspectFit" ></image>
+    <view>{{ scanning ? lang.refreshing : lang.refresh_deviceid_list }}</view>
+  </view>
+
+<!--   <view class="dlist"> -->
+    <scroll-view class="device-list" scroll-y>
+        <view wx:for="{{devices}}" wx:key="{{item.deviceId}}" class='device-list-item' id="{{[item.deviceId,item.sn,item.deviceType]}}" bindtap="selectDevice" hover-class='cell-hover'>
+            <view class='itemClass'>{{item.sn}}</view>
+        </view>
+    </scroll-view>
+<!--   </view> -->
+
+    <dialog id='dialog' 
+      title='{{lang.connect_device_fail}}' 
+      content='{{lang.reminder_connect_ble}}' 
+      confirmText='{{lang.btn_ok}}'
+      bind:confirmEvent="_confirmEvent">
+    </dialog>
+  
+</view>

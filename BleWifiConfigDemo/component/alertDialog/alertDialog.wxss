@@ -1,0 +1,78 @@
+.wx-mask{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+button {
+  background: transparent;
+}
+.wx-dialog{
+  position: fixed;
+  z-index: 5000;
+  width: 80%;
+  max-width: 600rpx;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+.wx-dialog-title{
+  padding: 60rpx 30rpx 0;
+  font-size: 40rpx;
+  color: #6BB3FF;
+}
+.wx-dialog-content{
+  padding: 24rpx 40rpx 60rpx;
+  line-height: 1.5;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-size: 28rpx;
+  color: #666666;
+  white-space: pre-line;
+}
+
+.sureBtn{
+  width: 270rpx;
+  /* margin: 0 5%; */
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size:28rpx;
+
+  border: none;
+  color: #fff;
+  border-radius: 60rpx;
+  -webkit-box-shadow: 0 10rpx 20rpx 0 rgba(122,165,255,0.30);
+  -moz-box-shadow: 0 10rpx 20rpx 0 rgba(122,165,255,0.30);
+  -o-box-shadow: 0 10rpx 20rpx 0 rgba(122,165,255,0.30);
+  box-shadow: 0 10rpx 20rpx 0 rgba(122,165,255,0.30);
+  /* background: -webkit-linear-gradient(#6BB3FF 0%, #9190FF 100%); */
+  /* background: -moz-linear-gradient(-144deg, #6BB3FF 0%, #9190FF 100%); */
+  /* background: -o-linear-gradient(-144deg, #6BB3FF 0%, #9190FF 100%); */
+  /* background: linear-gradient(-144deg, #6BB3FF 0%, #9190FF 100%); */
+  background: #6BB3FF;
+}
+
+.cancelBtn{
+  background-color: #fff;
+  font-size: 28rpx;
+  color: #6BB3FF;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 15rpx 0 30rpx
+}
+
+.cancelBtn::after{
+  border: none;
+}
+
+.mb{
+  margin-bottom: 60rpx;
+}

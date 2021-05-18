@@ -1,0 +1,88 @@
+/* pages/main/searchDevice.wxss */
+@keyframes rotateLoop {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container{
+  padding: 0 20rpx;
+}
+
+.header{
+  height: 110rpx;
+  min-height: 110rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 36rpx;
+}
+
+.img-back{
+  width: 50rpx;
+  height: 110rpx;
+  margin-left: 0rpx;
+  margin-right: 20rpx;
+}
+
+.tips{
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.scan-device{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 90rpx;
+  min-height: 90rpx;
+  margin-top: 25rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.2);
+}
+
+.img-refresh{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.rotate-loop {
+  animation: rotateLoop 1.5s infinite linear;
+}
+
+/* .dlist{
+  overflow: hidden;
+  height: 300rpx;
+  display: flex;
+  flex-grow: 1;
+} */
+
+.device-list {
+  overflow: hidden;
+  height: 500rpx;
+  min-height: 500rpx;
+  display: flex;
+  flex-grow: 1;
+}
+
+.device-list-item {
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.2);
+  padding: 30rpx 0;
+  margin-left: 0rpx;
+  margin-right: 0rpx;
+}
+
+.cell-hover {
+  opacity: 0.7;
+  background-color: #E6E6E6;
+  border-radius: 5rpx;
+}
+
+.itemClass{
+  width: 100%;
+  height: 100%;
+}

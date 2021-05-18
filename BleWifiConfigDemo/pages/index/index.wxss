@@ -1,0 +1,74 @@
+/**index.wxss**/
+
+.container{
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  align-items: flex-start;
+}
+
+.step{
+width: 100%;
+margin-top: 10rpx;
+font-size: 40rpx;
+}
+
+.label{
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, .6);
+}
+
+.select-val{
+  width: calc(100% - 30rpx);
+  height: 88rpx;
+  border: 1rpx solid rgba(0, 0, 0, .2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  margin-top: 10rpx;
+  justify-content: space-between;
+}
+
+.item-label{
+  color: rgba(0, 0, 0, .8);
+}
+
+.item-right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+}
+
+.item-value{
+  margin-right: 10rpx;
+  color: rgba(0, 0, 0, .6);
+}
+
+.right-arrow{
+  width: 20rpx;
+}
+
+.ver{
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 50rpx;
+  color: rgba(0, 0, 0, .8);
+}
+
+.btn{
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 50rpx;
+}
+
+.btn button{
+  font-style: normal;
+  background-color: #4283ff;
+  color: white;
+}
+
+.btn button.button-hover {
+  background-color: #54a4ef;
+}

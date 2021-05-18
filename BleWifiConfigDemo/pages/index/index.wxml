@@ -1,0 +1,51 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='step'>
+     {{ lang.step1 }}
+  </view>
+  <view class='label'>
+     {{ lang.select_deviceid }}
+  </view>
+  <view class="select-val" bindtap="selectDevice" >
+    <view class="item-label">{{ lang.deviceid }}</view>
+    <view class="item-right">
+      <view id="deviceid" class="item-value">{{ device.deviceName }}</view>
+      <image class='right-arrow' src='../../image/ic_right_arrow.png' mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <view class='step'>
+     {{ lang.step2 }}
+  </view>
+  <view class='label'>
+     {{ lang.label_server_info }}
+  </view>
+  <view class="select-val">
+    <input class="input" name="serverIp" value="{{serverIp}}" bindinput="inputServerIp" placeholder="{{ lang.hint_ip }}" maxlength="15"/>
+  </view>
+  <view class="select-val">
+    <input class="input" name="serverPort" value="{{serverPort}}" bindinput="inputServerPort" placeholder="{{ lang.hint_port }}" maxlength="5" type="number"/>
+  </view>
+
+  <view class='step'>
+     {{ lang.step3 }}
+  </view>
+  <view class='label'>
+     {{ lang.select_wifi }}
+  </view>
+  <view class="select-val">
+    <input class="input" name="ssid" value="{{ssid}}" bindinput="inputSsid" placeholder="{{ lang.input_wifi_name }}" />
+  </view>
+  <view class="select-val">
+    <input class="input" name="password" value="{{password}}" bindinput="inputPassword" placeholder="{{ lang.input_wifi_psw }}" password="true" />
+  </view>
+
+  <view class="ver">
+    V1.0
+  </view>
+
+  <view class="btn">
+      <button bindtap='configWifi' hover-class="button-hover" >{{ lang.pair_wifi }}</button>
+  </view>  
+
+</view>
