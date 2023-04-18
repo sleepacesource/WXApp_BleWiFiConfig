@@ -15,8 +15,8 @@ Page({
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     serverIp: "120.24.68.136",
     serverPort: 3010,
-    ssid: "CC-CM",
-    password: "20202020",
+    ssid: "choey",
+    password: "wdq28293477w",
     device: null,
   },
 
@@ -105,7 +105,8 @@ Page({
       wx.showLoading({
         title: '配网中...',
       })
-      bleWifiConfigHelper.bleWiFiConfig(this.data.device.deviceType, this.data.device.deviceId, this.data.serverIp, this.data.serverPort, 
+      console.log("bleWiFiConfig---------", this.data, typeof this.data.device.deviceType)
+      bleWifiConfigHelper.bleWiFiConfig(this.data.device.deviceType, this.data.device.deviceId, this.data.serverIp, this.data.serverPort,
         this.data.ssid, this.data.password, (res, obj)=>{
           console.log("bleWiFiConfig res:" + res+",deviceInfo:" + JSON.stringify(obj))
           wx.hideLoading();
@@ -159,7 +160,7 @@ Page({
     wx.setNavigationBarTitle({
       title: language.$t('app_name')
     })
-    
+
   },
 
   onShow(){
@@ -208,5 +209,5 @@ Page({
 
 
 
- 
+
 })

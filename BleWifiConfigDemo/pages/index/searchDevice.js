@@ -36,7 +36,7 @@ Page({
   stopLoading:function(){
 
   },
-  
+
   searchBleDevice () {
     // wx.showLoading({
     //   title: '正在寻找设备',
@@ -70,7 +70,7 @@ Page({
               let deviceType = DeviceType.getDeviceType(sn);
               list.push({ deviceId: device.deviceId, sn: sn, deviceType: deviceType})
             }
-            
+
             // wx.hideLoading()
             this.setData({
               devices: list,
@@ -84,7 +84,7 @@ Page({
             scanning: false,
           })
         }, scanDuration)
-        
+
       }else{
         wx.showModal({
           title:'提示',
@@ -110,8 +110,8 @@ Page({
     let deviceName = deviceInfo[1];
     let deviceType = parseInt(deviceInfo[2]);
     console.log("selectDevice----------deviceType:" + deviceType)
-    if(DeviceType.isM800(deviceType) || DeviceType.isZ400TWP3(deviceType) || DeviceType.isM8701W(deviceType) || DeviceType.isSN913E(deviceType) || 
-      DeviceType.isNoxSAW(deviceType) || DeviceType.isEW202W(deviceType) || DeviceType.isBM8701_2(deviceType)){
+    if(DeviceType.isM800(deviceType) || DeviceType.isZ400TWP3(deviceType) || DeviceType.isM8701W(deviceType) || DeviceType.isSN913E(deviceType) ||
+      DeviceType.isNoxSAW(deviceType) || DeviceType.isEW202W(deviceType) || DeviceType.isBM8701_2(deviceType) || DeviceType.isM901L(deviceType)){
       // wx.showLoading({
       //   title: '正在连接',
       // })
@@ -192,7 +192,7 @@ Page({
     //                 console.log("checkFirwareUpdate fail----------")
     //               }
     //             })
-                
+
     //             that.setData({
     //               connectedDeviceId: connectDeviceId
     //             });
@@ -230,21 +230,21 @@ Page({
     //             //   seasonOffset: 0
     //             // }
     //             // deviceOpt.checkTime(data)
-                
+
     //             wx.hideLoading()
     //             wx.showToast({
     //               title: '添加成功',
     //               icon: 'none',
     //               duration: 2000
     //             })
-                
+
 
     //             setTimeout(function(){
     //               wx.reLaunch({
     //                 url: '../main/main',
     //               })
     //             },2000)
-                
+
     //           },
 
     //           fail: function (res) {
@@ -327,7 +327,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
@@ -348,6 +348,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   }
 })

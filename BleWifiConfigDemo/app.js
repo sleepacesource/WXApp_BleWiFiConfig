@@ -2,6 +2,20 @@
 var language = require('./utils/language.js');
 let medicaBase = require('./utils/index.common.js')
 
+// medicaBase.setLogConfig({
+//           all: true,
+//           remoteAll: false
+//         },
+//         {
+//           log: {
+//             local: true,
+//             remote: {
+//               available: false,
+//               url: 'ws://192.168.197.100:6010'
+//             }
+//           }
+//         });
+
 App({
   onLaunch() {
     // 展示本地存储能力
