@@ -8,13 +8,14 @@ let sn913eApi = medicaBase.sn913eBleApi;
 let sa1001BleApi = medicaBase.sa1001BleApi;
 let ew202wApi = medicaBase.ew202wApi;
 let bm8701_2BleApi = medicaBase.bm8701_2BleApi;
+let m901lBleApi = medicaBase.m901lBleApi;
 let bleApi = null;
 
 function BleWifiConfigHelper(){
 
   this.bleWiFiConfig = (deviceType, address, serverIp, serverPort, ssid, pwd, callback) => {
     bleApi = this.selectBleApi(deviceType);
-    console.log("bleWiFiConfig bleApi", bleApi, arguments);
+    console.log("bleWiFiConfig bleApi", deviceType, address, serverIp, serverPort, ssid, pwd, bleApi);
     if(!bleApi){
       callback && callback(false);
       return;
@@ -82,6 +83,8 @@ function BleWifiConfigHelper(){
       bleApi = ew202wApi;
     }else if (DeviceType.isBM8701_2(deviceType)) {
       bleApi = bm8701_2BleApi;
+    }else if (DeviceType.isM901L(deviceType)) {
+      bleApi = m901lBleApi;
     }
     return bleApi;
   }
@@ -112,12 +115,12 @@ function BleWifiConfigHelper(){
 
   this.setServerAddress = (deviceType, serverIp, serverPort, callback)=>{
     if(this.isCommApi3(deviceType)){
-      bleApi.serverConfig({deviceType, ip: serverIp, port: serverPort, handler: (code)=>{
+      bleApi.serverConfig({deviceType, ip: serverIp, port: serverPort, timeout:10000, handler: (code)=>{
         console.log("serverConfig code:" + code);
-        callback && callback(code == 0 ? true : false)
+        callback && callback(code == 0 ? true : false);
       }});
     }else if(this.isCommApi(deviceType)){
-      bleApi.netSet({controlType:0, socketIp:serverIp, port:serverPort, httpIp:"", handler: (code, obj, status)=>{
+      bleApi.netSet({controlType:0, socketIp:serverIp, port:serverPort, httpIp:"", timeout:10000, handler: (code, obj, status)=>{
         console.log("serverConfig code:" + code, obj, status);
         callback && callback(code == 0 ? true : false)
       }});
@@ -126,12 +129,12 @@ function BleWifiConfigHelper(){
 
   this.wifiConfig = (deviceType, ssid, password, callback)=>{
     if(this.isCommApi3(deviceType)){
-      bleApi.wifiConfig({deviceType, ssid, password, handler: (code)=>{
+      bleApi.wifiConfig({deviceType, ssid, password, timeout:10000, handler: (code)=>{
         console.log("wifiConfig code:" + code);
         callback && callback(code == 0 ? true : false)
       }})
     }else if(this.isCommApi(deviceType)){
-      bleApi.wifiConfig({SSID:ssid, pswMode:1, psw:password, ipMode:0, handler: (code, obj, status)=>{
+      bleApi.wifiConfig({SSID:ssid, pswMode:1, psw:password, ipMode:0, timeout:10000, handler: (code, obj, status)=>{
         console.log("wifiConfig code:" + code, obj, status);
         callback && callback(code == 0 ? true : false)
       }});
@@ -158,6 +161,7 @@ function BleWifiConfigHelper(){
       case DeviceType.DEVICE_TYPE_SN913E:
       case DeviceType.DEVICE_TYPE_EW202W:
       case DeviceType.DEVICE_TYPE_BM8701_2:
+      case DeviceType.DEVICE_TYPE_M901L:
         return true;
     }
     return false;

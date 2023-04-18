@@ -25,6 +25,7 @@ const DEVICE_TYPE_M8701W = 0x0034; //M8701W
 const DEVICE_TYPE_EW201B = 0x1D;  // EW201B
 const DEVICE_TYPE_EW202W = 0x35;  // EW202W
 const DEVICE_TYPE_BM8701_2 = 0x31;  // BM8701-2 49
+const DEVICE_TYPE_M901L = 59;  // 59
 
 function isSleepaceDevice(deviceName){
   if (!deviceName) {
@@ -53,6 +54,7 @@ function getDeviceType(deviceName) {
     {rule: /^BM872[0-9a-zA-Z]{8}/, type: DEVICE_TYPE_BM8701_2},
     {rule: /^M871W[0-9a-zA-Z]{8}/, type: DEVICE_TYPE_M8701W},
     {rule: /^M8[-0-9a-zA-Z]{11}/, type: DEVICE_TYPE_M800},
+    {rule: /^M9[-0-9a-zA-Z]{11}/, type: DEVICE_TYPE_M901L},
     {rule: /^SN91A[0-9a-zA-Z]{8}/, type: DEVICE_TYPE_SN913A},
     {rule: /^SN91E[0-9a-zA-Z]{8}/, type: DEVICE_TYPE_SN913E},
     {rule: /^SN913[0-9a-zA-Z]{8}/, type: DEVICE_TYPE_SN913},
@@ -165,6 +167,14 @@ function isZ400TWP2(deviceType) {
 function isZ400TWP3(deviceType) {
   switch (deviceType) {
     case DEVICE_TYPE_Z400TWP3:
+      return true;
+  }
+  return false;
+}
+
+function isM901L(deviceType) {
+  switch (deviceType) {
+    case DEVICE_TYPE_M901L:
       return true;
   }
   return false;
@@ -341,18 +351,18 @@ function isBM8701_2(deviceType) {
  * @returns {boolean}
  */
 function isBleBind(deviceType) {
-  return isM800(deviceType) || isP200A(deviceType) || isNox2B(deviceType) || isNoxSAB(deviceType) || isSleepDot(deviceType) || isReston(deviceType) || isM871W(deviceType) || isSN913E(deviceType) ||   isEW201B(deviceType) || isEW202W(deviceType)  || isNoxSAB4(deviceType)
+  return isM800(deviceType) || isP200A(deviceType) || isNox2B(deviceType) || isNoxSAB(deviceType) || isSleepDot(deviceType) || isReston(deviceType) || isM8701W(deviceType) || isSN913E(deviceType) ||   isEW201B(deviceType) || isEW202W(deviceType)  || isNoxSAB4(deviceType)
 }
 
 function isAidDevice(deviceType) {
-  if (isNox1(deviceType) || isNoxSA(deviceType) || isNox2B(deviceType) || isSN91(deviceType) || isEw201b(deviceType) || isEw202w(deviceType) || isNoxSAB4(deviceType)) {
+  if (isNox1(deviceType) || isNoxSA(deviceType) || isNox2B(deviceType) || isSN91(deviceType) || isEW201B(deviceType) || isEW202W(deviceType) || isNoxSAB4(deviceType)) {
     return true;
   }
   return false;
 }
 
 function isMonitorDevice(deviceType) {
-  if (isReston(deviceType) || isPillow(deviceType) || isP200A(deviceType) || isSleepDot(deviceType) || isM800(deviceType) || isM871W(deviceType)) {
+  if (isReston(deviceType) || isPillow(deviceType) || isP200A(deviceType) || isSleepDot(deviceType) || isM800(deviceType) || isM8701W(deviceType)) {
     return true;
   }
   return false;
@@ -386,6 +396,8 @@ export default {
   DEVICE_TYPE_EW202W,
   DEVICE_TYPE_NOX_SAB_4,
   DEVICE_TYPE_BM8701_2,
+  DEVICE_TYPE_M901L,
+
   isSleepaceDevice,
   getDeviceType,
   getDeviceTypeByWiFiName,
@@ -396,6 +408,7 @@ export default {
   isZ400T2,
   isZ400TWP2,
   isZ400TWP3,
+  isM901L,
   isSleepDot,
   isB501,
   isSleepDotB502T,
