@@ -40,12 +40,16 @@
     <input class="input" name="password" value="{{password}}" bindinput="inputPassword" placeholder="{{ lang.input_wifi_psw }}" password="true" />
   </view>
 
+  <view wx:if="{{device.deviceType == 59}}" class="tips-m901l">
+    WiFi和密码为空，则为4G联网方式
+  </view>
+
   <view class="ver">
     V1.0
   </view>
 
   <view class="btn">
       <button bindtap='configWifi' hover-class="button-hover" >{{ lang.pair_wifi }}</button>
-  </view>  
+  </view>
 
 </view>

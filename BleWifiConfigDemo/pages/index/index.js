@@ -1,5 +1,7 @@
 // index.js
 // 获取应用实例
+import DeviceType from "../../utils/DeviceType";
+
 const app = getApp()
 const language = require('../../utils/language.js');
 import bleWifiConfigHelper from "../../utils/BleWifiConfigHelper.js";
@@ -82,7 +84,7 @@ Page({
         return;
       }
 
-      if(!this.data.ssid){
+      if(!this.data.ssid && !DeviceType.isM901L(this.data.device.deviceType)){
         wx.showModal({
           title: '提示',
           content: 'WiFi名称错误',
@@ -92,7 +94,7 @@ Page({
         return;
       }
 
-      if(!this.data.password){
+      if(!this.data.password && !DeviceType.isM901L(this.data.device.deviceType)){
         wx.showModal({
           title: '提示',
           content: 'WiFi密码不能为空',

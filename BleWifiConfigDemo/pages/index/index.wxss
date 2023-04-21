@@ -72,3 +72,7 @@ font-size: 40rpx;
 .btn button.button-hover {
   background-color: #54a4ef;
 }
+
+.tips-m901l{
+  color: red;
+}
