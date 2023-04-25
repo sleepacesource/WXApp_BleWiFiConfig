@@ -16,9 +16,9 @@ Page({
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     serverIp: "120.24.68.136",
-    serverPort: 3010,
+    serverPort: 29012,
     ssid: "choey",
-    password: "wdq28293477w",
+    password: "medica123456",
     device: null,
   },
 
@@ -109,11 +109,11 @@ Page({
       })
 
       let ssidRaw = null;
-      if(!this.data.ssid){
+      if(this.data.ssid){
         ssidRaw = this.toUTF8(this.data.ssid);
       }
 
-      console.log("bleWiFiConfig---------", ssidRaw, this.data, typeof this.data.device.deviceType)
+      console.log("bleWiFiConfig---------", this.data, typeof this.data.device.deviceType)
       bleWifiConfigHelper.bleWiFiConfig(this.data.device.deviceType, this.data.device.deviceId, this.data.serverIp, this.data.serverPort,
         this.data.ssid, ssidRaw, this.data.password, (res, obj)=>{
           console.log("bleWiFiConfig res:" + res+",deviceInfo:" + JSON.stringify(obj))
