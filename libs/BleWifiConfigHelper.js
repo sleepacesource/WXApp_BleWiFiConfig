@@ -13,9 +13,9 @@ let bleApi = null;
 
 function BleWifiConfigHelper(){
 
-  this.bleWiFiConfig = (deviceType, address, serverIp, serverPort, ssid, pwd, callback) => {
+  this.bleWiFiConfig = (deviceType, address, serverIp, serverPort, ssid, ssidRaw, pwd, callback) => {
     bleApi = this.selectBleApi(deviceType);
-    console.log("bleWiFiConfig bleApi", deviceType, address, serverIp, serverPort, ssid, pwd, bleApi);
+    console.log("bleWiFiConfig bleApi", deviceType, address, serverIp, serverPort, ssid, ssidRaw, pwd, bleApi);
     if(!bleApi){
       callback && callback(false);
       return;
@@ -23,7 +23,7 @@ function BleWifiConfigHelper(){
 
     if (bleApi.getConnectionState() == medicaBase.BLE_RET.connection.connected) {
       console.log("bleWiFiConfig connected---------");
-      this.bleWiFiConfigAfterConnected(deviceType, serverIp, serverPort, ssid, pwd, callback)
+      this.bleWiFiConfigAfterConnected(deviceType, serverIp, serverPort, ssid, ssidRaw, pwd, callback)
     }else{
       bleApi.connectDevice(address, undefined, (result) => {
         let code = 0;
@@ -38,7 +38,7 @@ function BleWifiConfigHelper(){
         }
         console.log("bleWiFiConfig connect---------code:" + code);
         if (code == 0) {//设备连接成功
-          this.bleWiFiConfigAfterConnected(deviceType, serverIp, serverPort, ssid, pwd, callback)
+          this.bleWiFiConfigAfterConnected(deviceType, serverIp, serverPort, ssid, ssidRaw, pwd, callback)
         }else{//设备连接失败
           callback && callback(false);
         }
@@ -46,12 +46,12 @@ function BleWifiConfigHelper(){
     }
   }
 
-  this.bleWiFiConfigAfterConnected = (deviceType, serverIp, serverPort, ssid, password, callback)=>{
+  this.bleWiFiConfigAfterConnected = (deviceType, serverIp, serverPort, ssid, ssidRaw, password, callback)=>{
     this.getDeviceInfo(deviceType, (res, obj)=>{
       if(res){
         this.setServerAddress(deviceType, serverIp, serverPort, (res)=>{
           if(res){
-            this.wifiConfig(deviceType, ssid, password, (res)=>{
+            this.wifiConfig(deviceType, ssid, ssidRaw, password, (res)=>{
               if(res){
                 callback && callback(true, obj);
               }else{
@@ -127,14 +127,14 @@ function BleWifiConfigHelper(){
     }
   }
 
-  this.wifiConfig = (deviceType, ssid, password, callback)=>{
+  this.wifiConfig = (deviceType, ssid, ssidRaw, password, callback)=>{
     if(this.isCommApi3(deviceType)){
-      bleApi.wifiConfig({deviceType, ssid, password, timeout:10000, handler: (code)=>{
+      bleApi.wifiConfig({deviceType, ssid, ssidRaw, password, timeout:10000, handler: (code)=>{
         console.log("wifiConfig code:" + code);
         callback && callback(code == 0 ? true : false)
       }})
     }else if(this.isCommApi(deviceType)){
-      bleApi.wifiConfig({SSID:ssid, pswMode:1, psw:password, ipMode:0, timeout:10000, handler: (code, obj, status)=>{
+      bleApi.wifiConfig({SSID:ssid, ssidRaw, pswMode:1, psw:password, ipMode:0, timeout:10000, handler: (code, obj, status)=>{
         console.log("wifiConfig code:" + code, obj, status);
         callback && callback(code == 0 ? true : false)
       }});
