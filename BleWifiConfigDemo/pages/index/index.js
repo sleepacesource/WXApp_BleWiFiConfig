@@ -107,9 +107,15 @@ Page({
       wx.showLoading({
         title: '配网中...',
       })
-      console.log("bleWiFiConfig---------", this.data, typeof this.data.device.deviceType)
+
+      let ssidRaw = null;
+      if(!this.data.ssid){
+        ssidRaw = this.toUTF8(this.data.ssid);
+      }
+
+      console.log("bleWiFiConfig---------", ssidRaw, this.data, typeof this.data.device.deviceType)
       bleWifiConfigHelper.bleWiFiConfig(this.data.device.deviceType, this.data.device.deviceId, this.data.serverIp, this.data.serverPort,
-        this.data.ssid, this.data.password, (res, obj)=>{
+        this.data.ssid, ssidRaw, this.data.password, (res, obj)=>{
           console.log("bleWiFiConfig res:" + res+",deviceInfo:" + JSON.stringify(obj))
           wx.hideLoading();
           if(res){
@@ -185,6 +191,23 @@ Page({
         console.log("startWifi fail:" + res.errMsg)
       }
     })
+  },
+
+  toUTF8(str) {
+    var result = new Array();
+    var k = 0;
+    for (var i = 0; i < str.length; i++) {
+      var j = encodeURI(str[i]);
+      if (j.length == 1) { //未转换的字符
+        result[k++] = j.charCodeAt(0);
+      } else { // 转换成%XX情势的字符
+        var bytes = j.split("%");
+        for (var l = 1; l < bytes.length; l++) {
+          result[k++] = parseInt("0x" + bytes[l]);
+        }
+      }
+    }
+    return result;
   },
 
   getUserProfile(e) {
