@@ -21,7 +21,7 @@
      {{ lang.label_server_info }}
   </view>
   <view class="select-val">
-    <input class="input" name="serverIp" value="{{serverIp}}" bindinput="inputServerIp" placeholder="{{ lang.hint_ip }}" maxlength="15"/>
+    <input class="input" name="serverIp" value="{{serverIp}}" bindinput="inputServerIp" placeholder="{{ lang.hint_ip }}" maxlength="32"/>
   </view>
   <view class="select-val">
     <input class="input" name="serverPort" value="{{serverPort}}" bindinput="inputServerPort" placeholder="{{ lang.hint_port }}" maxlength="5" type="number"/>

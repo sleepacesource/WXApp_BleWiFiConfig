@@ -63,11 +63,11 @@ Page({
   configWifi(){
     //console.log("index configWifi----------", bleWifiConfigHelper, util);
     if(this.data.device){
-      let isValidIP = util.isValidIP(this.data.serverIp);
-      if(!isValidIP){
+      // let isValidIP = util.isValidIP(this.data.serverIp);
+      if(!this.data.serverIp){
         wx.showModal({
           title: '提示',
-          content: '服务器IP错误',
+          content: '服务器IP或域名不能为空',
           confirmText: '确定',
           showCancel: false
         })
