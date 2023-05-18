@@ -43,5 +43,6 @@ App({
     userInfo: null,
     statusBarHeight: 0,
     medicaBase: medicaBase,
+    appVersion: "1.0.6",
   }
 })

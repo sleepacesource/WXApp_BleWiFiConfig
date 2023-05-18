@@ -17,9 +17,10 @@ Page({
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     serverIp: "120.24.68.136",
     serverPort: 29012,
-    ssid: "choey",
-    password: "medica123456",
+    ssid: "",
+    password: "",
     device: null,
+    version: app.globalData.appVersion
   },
 
   // 事件处理函数

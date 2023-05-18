@@ -45,7 +45,7 @@
   </view>
 
   <view class="ver">
-    V1.0.3
+    V{{version}}
   </view>
 
   <view class="btn">
